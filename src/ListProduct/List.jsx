@@ -155,6 +155,12 @@ const List = () => {
           >
             Delete
           </Button>
+          <Button>
+            {" "}
+            <Link to={`/update/${row.id}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">Update</div>
+            </Link>
+          </Button>
         </div>
       ),
     },

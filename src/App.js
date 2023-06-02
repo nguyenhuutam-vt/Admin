@@ -10,6 +10,8 @@ import CreateProduct from "./ListProduct/CreateProduct/CreateProduct";
 import Chart from "./Chart/Chart";
 import DetailProduct from "./ListProduct/DetailProduct";
 import CreateP from "./ListProduct/CreateP";
+import UpdateProduct from "./ListProduct/UpdateProduct";
+import Test from "./ListProduct/CreateProduct/Test";
 
 
 function App() {
@@ -24,7 +26,8 @@ function App() {
       <Route path='/createProduct' element={<CreateProduct/>} />
       <Route path='/chart' element={<Chart/>} />
       <Route path='detailProduct/:encode' element={<DetailProduct/>} />
-
+      <Route path='/update/:encode' element={<UpdateProduct/>} />
+      <Route path='/test' element={<Test/>} />
     </Routes>
   );
 }

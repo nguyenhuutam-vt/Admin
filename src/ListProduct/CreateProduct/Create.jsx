@@ -1,9 +1,21 @@
-import { Box, Button, TextField, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  NativeSelect,
+  TextField,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import HeaderManage from "../../components/Sket/HeaderManage";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Select } from "antd";
 const Create = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
@@ -17,6 +29,22 @@ const Create = () => {
     title,
     description,
   };
+
+  const [categorie, setCategori] = useState("");
+
+  useEffect(() => {
+    const fecthData = async () => {
+      axios
+        .get("https://dummyjson.com/products/categories")
+        .then((res) => {
+          setCategori(res.data);
+        })
+
+        .catch((err) => console.log(err));
+    };
+    fecthData();
+  }, []);
+  console.log("asd", categorie);
 
   const Submit = (e) => {
     e.preventDefault();
@@ -50,57 +78,70 @@ const Create = () => {
         initialValues={initialValues}
         validationSchema={checkoutSchema}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleBlur,
-          handleChange,
-          handleSubmit,
-        }) => (
-          <form onSubmit={Submit}>
-            <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
-            >
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Name"
-                onBlur={handleBlur}
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Description"
-                onBlur={handleBlur}
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
-              />
+        <form onSubmit={Submit}>
+          <Box
+            display="grid"
+            gap="30px"
+            gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+            sx={{
+              "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+            }}
+          >
+            <TextField
+              fullWidth
+              variant="filled"
+              type="text"
+              label="Name"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              name="firstName"
+              sx={{ gridColumn: "span 2" }}
+            />
+            <TextField
+              fullWidth
+              variant="filled"
+              type="text"
+              label="Description"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              name="lastName"
+              sx={{ gridColumn: "span 2" }}
+            />
+            {/* <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={categorie}
+                label="Age"
+              >
+                {" "}
+                <MenuItem value={categorie}></MenuItem>
+              </Select> */}
+
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                  Age
+                </InputLabel>
+                <NativeSelect
+                  defaultValue={30}
+                  inputProps={{
+                    name: "age",
+                    id: "uncontrolled-native",
+                  }}
+                >
+                  <option value={10}>Ten</option>
+                  <option value={20}>Twenty</option>
+                  <option value={30}>Thirty</option>
+                </NativeSelect>
+              </FormControl>
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
-                Create New User
-              </Button>
-            </Box>
-          </form>
-        )}
+          </Box>
+          <Box display="flex" justifyContent="end" mt="20px">
+            <Button type="submit" color="secondary" variant="contained">
+              Create New User
+            </Button>
+          </Box>
+        </form>
       </Formik>
     </Box>
   );
