@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Route, Routes } from "react-router-dom";
+import Admin from "./Layout/Admin";
+import About from "./Layout/About";
+import Member from "./Layout/Member";
+import Contact from "./Contact/Contact";
+import CreateUser from "./Create/CreateUser";
+import ListProduct from "./ListProduct/ListProduct";
+import CreateProduct from "./ListProduct/CreateProduct/CreateProduct";
+import Chart from "./Chart/Chart";
+import DetailProduct from "./ListProduct/DetailProduct";
+import CreateP from "./ListProduct/CreateP";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Admin/>} />
+      <Route path="/about" element={<About/>} />
+      <Route path="/memeber" element={<Member/>} />
+      <Route path="/contact" element={<Contact/>} />
+      <Route path="/create" element={<CreateUser/>} />
+      <Route path="/list" element={<ListProduct/>} />
+      <Route path='/createProduct' element={<CreateProduct/>} />
+      <Route path='/chart' element={<Chart/>} />
+      <Route path='detailProduct/:encode' element={<DetailProduct/>} />
+
+    </Routes>
   );
 }
 
