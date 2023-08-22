@@ -2,7 +2,7 @@ import { PieChartOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 export const SidebarData = [
   {
-    label: <NavLink to="/">DashBoard</NavLink>,
+    label: <NavLink to="/admin">DashBoard</NavLink>,
     key: "1",
     icon: <PieChartOutlined />,
   },
@@ -22,7 +22,7 @@ export const SidebarData = [
     icon: <PieChartOutlined />,
   },
   {
-    label: <NavLink to="/list">List Product</NavLink>,
+    label: <NavLink to="/">List Product</NavLink>,
     key: "7",
     icon: <PieChartOutlined />,
   },

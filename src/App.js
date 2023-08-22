@@ -17,17 +17,17 @@ import Test from "./ListProduct/CreateProduct/Test";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Admin/>} />
-      <Route path="/about" element={<About/>} />
-      <Route path="/memeber" element={<Member/>} />
-      <Route path="/contact" element={<Contact/>} />
-      <Route path="/create" element={<CreateUser/>} />
-      <Route path="/list" element={<ListProduct/>} />
-      <Route path='/createProduct' element={<CreateProduct/>} />
-      <Route path='/chart' element={<Chart/>} />
-      <Route path='detailProduct/:encode' element={<DetailProduct/>} />
-      <Route path='/update/:encode' element={<UpdateProduct/>} />
-      <Route path='/test' element={<Test/>} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/memeber" element={<Member />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/create" element={<CreateUser />} />
+      <Route path="/" element={<ListProduct />} />
+      <Route path='/createProduct' element={<CreateProduct />} />
+      <Route path='/chart' element={<Chart />} />
+      <Route path='detailProduct/:encode' element={<DetailProduct />} />
+      <Route path='/update/:encode' element={<UpdateProduct />} />
+      <Route path='/test' element={<Test />} />
     </Routes>
   );
 }

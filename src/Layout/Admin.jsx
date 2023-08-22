@@ -109,7 +109,7 @@ const Admin = () => {
   } = theme.useToken();
   return (
     <Layout>
-      <Headerr />
+      {/* <Headerr /> */}
 
       <Layout
         style={{
